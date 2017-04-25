@@ -1,0 +1,15 @@
+{
+  "name": "react_todo_app_v1",
+  "version": "1.0.0",
+  "description": "Basic react ToDo List App using class ES5 syntax",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Brian Lee",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
