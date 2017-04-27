@@ -8,7 +8,20 @@ var ToDoList = React.createClass({
     },
     
     addItem: function(e) {
+        var itemArray = this.state.items; //Stores referencestate object items property
 
+        itemArray.push(
+            {
+                text: this.inputElement.value, // Value of the reference 
+                key: Date.now() //Key added to prevent warning and provide uniqueness for the object store in array
+            }
+        );
+
+        this.setState({
+            items: itemArray //Set state object to item's property'
+        });
+
+        e.preventDefault();
     },
     render: function() {
         var bodystyle = 
@@ -39,7 +52,9 @@ var ToDoList = React.createClass({
             <div style={bodystyle} className="todoListMain">
             <div className="header">
                 <form onSubmit={this.addItem}>
-                    <input style={headerinput} placeholder="enter task">
+                    <input style={headerinput}
+                     ref={(input) => this.inputElement = input} //Store input reference
+                     placeholder="enter task">
                     </input>
                     <button style={buttonstyle} type="submit">add</button>
                 </form>
