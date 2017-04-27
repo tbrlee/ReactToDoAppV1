@@ -1,5 +1,21 @@
 var destination = document.querySelector("#container");
 
+var TodoItems = React.createClass({
+    render: function() {
+        var todoEntries = this.props.entries;
+
+        function createTasks(item) {
+            return <li key={item.key}>{item.text}</li>
+        }
+        var listItems = todoEntries.map(createTasks); //Iterate every item inside TodoEntries and use createTasks function to create list element for each entry
+        return(
+            <ul className="theList">
+                {listItems}
+            </ul>
+        );
+    }
+});
+
 var ToDoList = React.createClass({
     getInitialState: function() {
         return {
@@ -8,7 +24,7 @@ var ToDoList = React.createClass({
     },
     
     addItem: function(e) {
-        var itemArray = this.state.items; //Stores referencestate object items property
+        var itemArray = this.state.items; //Stores reference state object items property
 
         itemArray.push(
             {
@@ -59,6 +75,7 @@ var ToDoList = React.createClass({
                     <button style={buttonstyle} type="submit">add</button>
                 </form>
             </div>
+            <TodoItems entries={this.state.items}/>
         </div>
         );     
     }
